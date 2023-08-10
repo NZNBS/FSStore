@@ -6,9 +6,11 @@ import authReducer from './auth/auth.slice';
 import cartReducer from './cart/cart.slice';
 import { categoriesApi } from './categories/api';
 import categoriesReducer from './categories/categories.slice';
+import { mapsApi } from './maps/api';
 import { ordersApi } from './orders/api';
 import { productsApi } from './products/api';
 import productsReducer from './products/products.slice';
+import { settingsApi } from './settings/api';
 
 export const store = configureStore({
   reducer: {
@@ -20,13 +22,17 @@ export const store = configureStore({
     [productsApi.reducerPath]: productsApi.reducer,
     [ordersApi.reducerPath]: ordersApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [settingsApi.reducerPath]: settingsApi.reducer,
+    [mapsApi.reducerPath]: mapsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       categoriesApi.middleware,
       productsApi.middleware,
       ordersApi.middleware,
-      authApi.middleware
+      authApi.middleware,
+      settingsApi.middleware,
+      mapsApi.middleware
     ),
 });
 
